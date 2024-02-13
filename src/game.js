@@ -8,7 +8,6 @@ class Game {
     this._canvas = document.getElementById(this._config.canvas.id);
     this._canvas.width = this._config.canvas.width;
     this._canvas.height = this._config.canvas.height;
-    this._context = this._canvas.getContext("2d");
 
     this.width = this._config.canvas.width;
     this.height = this._config.canvas.height;
@@ -68,7 +67,7 @@ class Game {
 
       this._lastUpdate = now;
 
-      window.requestAnimationFrame(this._loop.bind(this));
+      requestAnimationFrame(this._loop.bind(this));
     }
   }
 
