@@ -1,5 +1,5 @@
 class Config {
-  gravity = 10;
+  gravity = 50;
 
   canvas = {
     id: "game",
@@ -10,7 +10,7 @@ class Config {
   spritesheet = {
     width: 606,
     height: 428,
-    src: "assets/spritesheet.png",
+    src: "./assets/spritesheet.png",
   };
 
   bird = {
@@ -19,7 +19,7 @@ class Config {
     width: 34,
     height: 26,
 
-    flapSpeed: 10,
+    flapSpeed: 50,
 
     frames: [
       {

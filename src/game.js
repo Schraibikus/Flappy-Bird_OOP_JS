@@ -1,6 +1,3 @@
-const canvas = document.getElementById("game");
-const context = canvas.getContext("2d");
-
 class Game {
   constructor() {
     this._config = new Config();
@@ -23,7 +20,7 @@ class Game {
   }
 
   async prepare() {
-    this._spriteSheet = this._resourceLoader.load({
+    this._spriteSheet = await this._resourceLoader.load({
       type: RESOURSE_TYPE.IMAGE,
       src: this._config.spritesheet.src,
       width: this._config.spritesheet.width,

@@ -6,11 +6,13 @@ class Bird extends Entity {
     this.falling = true;
   }
 
+  //обновляем птичку
   update(delta) {
     super.update(delta);
 
     this._physicsEngine.update(this, delta);
 
+    // проверяем что птичка не поднялась за пределы экрана
     if (this.y < 0) {
       this.y = 0;
     }
@@ -20,6 +22,7 @@ class Bird extends Entity {
     }
   }
 
+  //движение вверх
   flap() {
     this.speed = -this._flapSpeed;
   }
