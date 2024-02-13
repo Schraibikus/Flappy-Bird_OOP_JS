@@ -42,14 +42,25 @@ class Game {
       drawEngine: this._drawEngine,
       game: this,
     });
+    this._background = new Background({
+      x: this._config.background.x,
+      y: this._config.background.y,
+      width: this._config.background.width,
+      height: this._config.background.height,
+      spriteSheet: this._spriteSheet,
+      drawEngine: this._drawEngine,
+      game: this,
+    });
   }
 
   update(delta) {
     this._bird.update(delta);
+    this._background.update(delta);
   }
 
   draw() {
     this._bird.draw();
+    this._background.draw();
   }
 
   _loop() {

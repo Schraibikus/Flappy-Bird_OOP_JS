@@ -13,6 +13,13 @@ class Config {
     src: "./assets/spritesheet.png",
   };
 
+  background = {
+    x: 0,
+    y: 0,
+    width: 276,
+    height: 226,
+  };
+
   bird = {
     x: 50,
     y: 100,
