@@ -30,6 +30,21 @@ class Game {
 
   reset() {
     this._score = 0;
+    this._background = new Background({
+      x: this._config.background.x,
+      y: this._config.background.y,
+      width: this._config.background.width,
+      height: this._config.background.height,
+      // x: this._config.canvas.x,
+      // y: this._config.canvas.y,
+      // width: this._config.canvas.width,
+      // height: this._config.canvas.height,
+      spriteSheet: this._spriteSheet,
+      drawEngine: this._drawEngine,
+      game: this,
+    });
+    // console.log("Game.reset.background.x", this._config.background.x);
+    // console.log("Game.reset.background.y", this._config.background.y);
     this._bird = new Bird({
       x: this._config.bird.x,
       y: this._config.bird.y,
@@ -42,15 +57,6 @@ class Game {
       drawEngine: this._drawEngine,
       game: this,
     });
-    this._background = new Background({
-      x: this._config.background.x,
-      y: this._config.background.y,
-      width: this._config.background.width,
-      height: this._config.background.height,
-      spriteSheet: this._spriteSheet,
-      drawEngine: this._drawEngine,
-      game: this,
-    });
   }
 
   update(delta) {
@@ -59,8 +65,8 @@ class Game {
   }
 
   draw() {
-    this._bird.draw();
     this._background.draw();
+    this._bird.draw();
   }
 
   _loop() {

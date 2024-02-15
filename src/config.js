@@ -3,6 +3,8 @@ class Config {
 
   canvas = {
     id: "game",
+    x: 0,
+    y: 0,
     width: 480,
     height: 320,
   };
@@ -13,9 +15,16 @@ class Config {
     src: "./assets/spritesheet.png",
   };
 
+  /*   pipe = {
+    x: 70,
+    y: 110,
+    width: 300,
+    height: 300,
+  }; */
+
   background = {
     x: 0,
-    y: 0,
+    y: 24,
     width: 276,
     height: 226,
   };
