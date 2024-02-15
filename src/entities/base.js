@@ -19,6 +19,7 @@ class Entity {
   }
 
   draw() {
+    // пытаюсь отрисовать фон
     this._drawEngine.drawImage({
       spriteSheet: this._spriteSheet,
       x: this.x,
@@ -26,6 +27,7 @@ class Entity {
       width: this.width,
       height: this.height,
     });
+    // рисуем птицу
     this._drawEngine.drawImage({
       spriteSheet: this._spriteSheet,
       image: this._frames[this._frameIdx],
