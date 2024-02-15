@@ -24,7 +24,7 @@ class Config {
 
   background = {
     x: 0,
-    y: 24,
+    y: 0,
     width: 276,
     height: 226,
   };

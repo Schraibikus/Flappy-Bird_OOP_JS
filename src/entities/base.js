@@ -36,8 +36,8 @@ class Entity {
       width: this.width,
       height: this.height,
     });
-    console.log("Entity draw x", this.x);
-    console.log("Entity draw y", this.y);
+    // console.log("Entity draw x", this.x);
+    // console.log("Entity draw y", this.y);
     // console.log("Entity draw width", this.width);
     // console.log("Entity draw height", this.height);
   }

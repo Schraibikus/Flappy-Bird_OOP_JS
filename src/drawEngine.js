@@ -41,8 +41,8 @@ class CanvasDrawEngine extends DrawEngine {
         width,
         height
       );
-      console.log("CanvasDrawEngine image.x", image.x);
-      console.log("CanvasDrawEngine image.y", image.y);
+      // console.log("CanvasDrawEngine image.x", image.x);
+      // console.log("CanvasDrawEngine image.y", image.y);
       // console.log("CanvasDrawEngine image.w", image.w);
       // console.log("CanvasDrawEngine image.h", image.h);
       // console.log("CanvasDrawEngine x", x);
