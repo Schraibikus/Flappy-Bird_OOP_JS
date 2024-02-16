@@ -1,12 +1,10 @@
 class Config {
-  gravity = 50;
+  gravity = 300;
 
   speedGame = 6.2;
 
   canvas = {
     id: "game",
-    // x: 0,
-    // y: 0,
     width: 480,
     height: 320,
   };
@@ -45,7 +43,7 @@ class Config {
     width: 34,
     height: 26,
 
-    flapSpeed: 50,
+    flapSpeed: 150,
 
     frames: [
       {

@@ -7,7 +7,7 @@ class Background extends Entity {
   }
 
   draw() {
-    this._index += 0.3;
+    this._index += 0.6;
 
     const backgroundX = -((this._index * this._SPEEDGAME) % this.width);
 
@@ -31,8 +31,4 @@ class Background extends Entity {
       });
     });
   }
-
-  // update(delta) {
-  //   super.update(delta);
-  // }
 }

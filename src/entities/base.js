@@ -28,6 +28,6 @@ class Entity {
   }
 
   update(delta) {
-    this._frameIdx = (this._frameIdx + Math.ceil(delta)) % 4;
+    this._frameIdx = (this._frameIdx + Math.ceil(delta)) % this._frames.length;
   }
 }

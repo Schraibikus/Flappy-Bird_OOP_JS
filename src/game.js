@@ -20,7 +20,7 @@ class Game {
   }
 
   async prepare() {
-    this._spriteSheet = await this._resourceLoader.load({
+    this._spriteSheet = this._resourceLoader.load({
       type: RESOURSE_TYPE.IMAGE,
       src: this._config.spritesheet.src,
       width: this._config.spritesheet.width,
@@ -36,10 +36,6 @@ class Game {
       y: this._config.background.y,
       width: this._config.background.width,
       height: this._config.background.height,
-      // x: this._config.canvas.x,
-      // y: this._config.canvas.y,
-      // width: this._config.canvas.width,
-      // height: this._config.canvas.height,
       frames: this._config.background.frames,
       speedGame: this._config.speedGame,
       spriteSheet: this._spriteSheet,
@@ -62,7 +58,6 @@ class Game {
   }
 
   update(delta) {
-    // this._background.update(delta);
     this._bird.update(delta);
   }
 
@@ -97,6 +92,6 @@ class Game {
 
   gameOver() {
     this._playing = false;
-    alert(`Game over: ${this._score}`);
+    console.log(`Game over: ${this._score}`);
   }
 }
