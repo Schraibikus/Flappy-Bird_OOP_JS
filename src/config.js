@@ -1,10 +1,12 @@
 class Config {
   gravity = 50;
 
+  speedGame = 6.2;
+
   canvas = {
     id: "game",
-    x: 0,
-    y: 0,
+    // x: 0,
+    // y: 0,
     width: 480,
     height: 320,
   };
@@ -25,8 +27,16 @@ class Config {
   background = {
     x: 0,
     y: 0,
-    width: 276,
-    height: 226,
+    width: this.canvas.width,
+    height: this.canvas.height,
+    frames: [
+      {
+        x: 0,
+        y: 0,
+        w: 276,
+        h: 228,
+      },
+    ],
   };
 
   bird = {

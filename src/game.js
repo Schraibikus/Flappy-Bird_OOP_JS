@@ -13,7 +13,7 @@ class Game {
     this._physicsEngine = new PhysicsEngine({ gravity: this._config.gravity });
     this._resourceLoader = new ResourceLoader();
     this._inputHandler = new MouseInputHandler({
-      left: ({ x, y }) => {
+      left: () => {
         this._bird.flap();
       },
     });
@@ -30,21 +30,23 @@ class Game {
 
   reset() {
     this._score = 0;
+
     this._background = new Background({
       x: this._config.background.x,
       y: this._config.background.y,
       width: this._config.background.width,
       height: this._config.background.height,
-      x: this._config.canvas.x,
-      y: this._config.canvas.y,
-      width: this._config.canvas.width,
-      height: this._config.canvas.height,
+      // x: this._config.canvas.x,
+      // y: this._config.canvas.y,
+      // width: this._config.canvas.width,
+      // height: this._config.canvas.height,
+      frames: this._config.background.frames,
+      speedGame: this._config.speedGame,
       spriteSheet: this._spriteSheet,
       drawEngine: this._drawEngine,
       game: this,
     });
-    // console.log("Game.reset.background.x", this._config.background.x);
-    // console.log("Game.reset.background.y", this._config.background.y);
+
     this._bird = new Bird({
       x: this._config.bird.x,
       y: this._config.bird.y,
@@ -60,13 +62,13 @@ class Game {
   }
 
   update(delta) {
+    // this._background.update(delta);
     this._bird.update(delta);
-    this._background.update(delta);
   }
 
   draw() {
-    this._background.draw();
     this._bird.draw();
+    this._background.draw();
   }
 
   _loop() {
