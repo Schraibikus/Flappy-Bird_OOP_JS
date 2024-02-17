@@ -37,8 +37,20 @@ class Game {
       width: this._config.background.width,
       height: this._config.background.height,
       frames: this._config.background.frames,
-      speedGame: this._config.speedGame,
       spriteSheet: this._spriteSheet,
+      speedGame: this._config.speedGame,
+      drawEngine: this._drawEngine,
+      game: this,
+    });
+
+    this._backgroundBottom = new BackgroundBottom({
+      x: this._config.backgroundBottom.x,
+      y: this._config.backgroundBottom.y,
+      width: this._config.backgroundBottom.width,
+      height: this._config.backgroundBottom.height,
+      frames: this._config.backgroundBottom.frames,
+      spriteSheet: this._spriteSheet,
+      speedGame: this._config.speedGame,
       drawEngine: this._drawEngine,
       game: this,
     });
@@ -55,15 +67,33 @@ class Game {
       drawEngine: this._drawEngine,
       game: this,
     });
+
+    this._pipe = new Pipe({
+      x: this._config.pipe.x,
+      y: this._config.pipe.y,
+      width: this._config.pipe.width,
+      height: this._config.pipe.height,
+      frames: this._config.pipe.frames,
+      spriteSheet: this._spriteSheet,
+      speedGame: this._config.speedGame,
+      drawEngine: this._drawEngine,
+      pipeGap: this._config.pipeGap,
+      game: this,
+    });
   }
 
   update(delta) {
+    this._background.update(delta);
+    this._backgroundBottom.update(delta);
+    this._pipe.update(delta);
     this._bird.update(delta);
   }
 
   draw() {
-    this._bird.draw();
     this._background.draw();
+    this._backgroundBottom.draw();
+    this._pipe.draw();
+    this._bird.draw();
   }
 
   _loop() {

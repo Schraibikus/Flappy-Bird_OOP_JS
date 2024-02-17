@@ -15,13 +15,6 @@ class Config {
     src: "./assets/spritesheet.png",
   };
 
-  /*   pipe = {
-    x: 70,
-    y: 110,
-    width: 300,
-    height: 300,
-  }; */
-
   background = {
     x: 0,
     y: 0,
@@ -31,8 +24,47 @@ class Config {
       {
         x: 0,
         y: 0,
-        w: 276,
+        w: 275,
         h: 228,
+      },
+    ],
+  };
+
+  backgroundBottom = {
+    x: 0,
+    y: 300,
+    width: this.canvas.width,
+    height: 110,
+    frames: [
+      {
+        x: 276,
+        y: 2,
+        w: 224,
+        h: 110,
+      },
+    ],
+  };
+
+  pipeGap = 104;
+
+  pipe = {
+    x: 0,
+    y: 0,
+    width: 68,
+    height: 400,
+
+    frames: [
+      {
+        x: 502,
+        y: 0,
+        w: 52,
+        h: 400,
+      },
+      {
+        x: 555,
+        y: 0,
+        w: 52,
+        h: 400,
       },
     ],
   };
