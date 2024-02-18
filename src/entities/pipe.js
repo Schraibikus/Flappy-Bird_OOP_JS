@@ -51,12 +51,7 @@ class Pipe extends Entity {
           x: this._game.width,
           y: this._random,
         });
-        // this._index = 0;
         console.log("i", i);
-        // this._pipes.push({
-        //   x: this._game.width,
-        //   y: this._random,
-        // });
       }
     }
   }
