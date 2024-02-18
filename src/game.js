@@ -78,6 +78,8 @@ class Game {
       speedGame: this._config.speedGame,
       drawEngine: this._drawEngine,
       pipeGap: this._config.pipeGap,
+      pipes: this._config.pipe.pipes,
+      random: this._config.getRandonInt(-100, 300),
       game: this,
     });
   }

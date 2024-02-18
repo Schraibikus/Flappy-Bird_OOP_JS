@@ -1,4 +1,20 @@
 class Config {
+  // score_sound = {
+  //   src: "./assets/audio/sfx_point.wav",
+  // };
+  // flap_sound = {
+  //   src: "./assets/audio/sfx_flap.wav",
+  // };
+  // hit_sound = {
+  //   src: "./assets/audio/sfx_hit.wav",
+  // };
+  // swooshing_sound = {
+  //   src: "./assets/audio/sfx_swooshing.wav",
+  // };
+  // die_sound = {
+  //   src: "./assets/audio/sfx_die.wav",
+  // };
+
   gravity = 300;
 
   speedGame = 6.2;
@@ -45,10 +61,18 @@ class Config {
     ],
   };
 
+  getRandonInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
   pipeGap = 104;
 
   pipe = {
-    x: 0,
+    pipes: [],
+
+    x: this.canvas.width,
     y: 0,
     width: 68,
     height: 400,
