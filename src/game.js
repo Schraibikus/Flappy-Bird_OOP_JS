@@ -79,7 +79,7 @@ class Game {
       drawEngine: this._drawEngine,
       pipeGap: this._config.pipeGap,
       pipes: this._config.pipe.pipes,
-      random: this._config.getRandonInt(-100, 300),
+      // random: this._config.getRandonInt(-100, 300),
       game: this,
     });
   }
