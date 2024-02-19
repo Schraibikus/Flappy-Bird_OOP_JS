@@ -79,7 +79,9 @@ class Game {
       drawEngine: this._drawEngine,
       pipeGap: this._config.pipeGap,
       pipes: this._config.pipe.pipes,
-      // random: this._config.getRandonInt(-100, 300),
+      pipeMin: this._config.pipeMin,
+      pipeMax: this._config.pipeMax,
+      pipeNext: this._config.pipeNext,
       game: this,
     });
   }
@@ -87,7 +89,6 @@ class Game {
   update(delta) {
     this._background.update(delta);
     this._backgroundBottom.update(delta);
-    this._pipe.update(delta);
     this._bird.update(delta);
   }
 

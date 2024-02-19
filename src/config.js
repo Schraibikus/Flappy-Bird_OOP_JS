@@ -17,7 +17,7 @@ class Config {
 
   gravity = 300;
 
-  speedGame = 6.2;
+  speedGame = 5;
 
   canvas = {
     id: "game",
@@ -61,20 +61,17 @@ class Config {
     ],
   };
 
-  getRandonInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
   pipeGap = 104;
+  pipeMin = 154;
+  pipeMax = 270;
+  pipeNext = 208;
 
   pipe = {
     pipes: [],
 
     x: this.canvas.width,
     y: 0,
-    width: 68,
+    width: 68, //bird.width * 2
     height: 400,
 
     frames: [
