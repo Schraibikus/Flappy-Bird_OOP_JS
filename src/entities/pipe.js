@@ -46,13 +46,16 @@ class Pipe extends Entity {
 
       if (this._pipes[i].x + this.width < 0)
         this._pipes[i].x = this._game.width;
-      if (this._pipes[i].x == 99) {
+      if (this._pipes[i].x == 252) {
         this._pipes.push({
           x: this._game.width,
           y: Math.floor(Math.random() * (249 - 0 + 1)) + 0, //тестовые значения
         });
         // console.log("i", i);
         console.log(this._pipes);
+      }
+      if (this._pipes[i].x == -66) {
+        this._pipes.shift();
       }
     }
   }
