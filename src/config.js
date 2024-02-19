@@ -1,7 +1,23 @@
 class Config {
+  // score_sound = {
+  //   src: "./assets/audio/sfx_point.wav",
+  // };
+  // flap_sound = {
+  //   src: "./assets/audio/sfx_flap.wav",
+  // };
+  // hit_sound = {
+  //   src: "./assets/audio/sfx_hit.wav",
+  // };
+  // swooshing_sound = {
+  //   src: "./assets/audio/sfx_swooshing.wav",
+  // };
+  // die_sound = {
+  //   src: "./assets/audio/sfx_die.wav",
+  // };
+
   gravity = 300;
 
-  speedGame = 6.2;
+  speedGame = 5;
 
   canvas = {
     id: "game",
@@ -46,11 +62,16 @@ class Config {
   };
 
   pipeGap = 104;
+  pipeMin = 154;
+  pipeMax = 270;
+  pipeNext = 208;
 
   pipe = {
-    x: 0,
+    pipes: [],
+
+    x: this.canvas.width,
     y: 0,
-    width: 68,
+    width: 68, //bird.width * 2
     height: 400,
 
     frames: [

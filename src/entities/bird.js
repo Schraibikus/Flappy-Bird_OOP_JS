@@ -31,7 +31,7 @@ class Bird extends Entity {
   //движение вверх
   flap() {
     this.speed = -this._flapSpeed;
-    const flap_sound = new Audio();
-    flap_sound.src = "assets/audio/swoosh.wav";
+    // const flap_sound = new Audio();
+    // flap_sound.src = "assets/audio/swoosh.wav";
   }
 }
