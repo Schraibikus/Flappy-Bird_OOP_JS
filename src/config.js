@@ -17,7 +17,7 @@ class Config {
 
   gravity = 300;
 
-  speedGame = 5;
+  speedGame = 3;
 
   canvas = {
     id: "game",

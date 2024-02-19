@@ -19,18 +19,22 @@ class Bird extends Entity {
     }
 
     //для отладки, чтобы птица не падала
-    if (this.y > this.height) {
-      this.y = this.height;
-    }
-
-    // if (this.y + this.height >= this._game.height) {
-    //   this._game.gameOver();
+    // if (this.y > this.height) {
+    //   this.y = this.height;
     // }
+
+    if (this.y + this.height >= this._game._backgroundBottom.y) {
+      this._game.gameOver();
+    }
   }
 
   //движение вверх
   flap() {
     this.speed = -this._flapSpeed;
+    // console.log("this.speed", this.speed);
+    // console.log("this._flapSpeed", this._flapSpeed);
+    // console.log("this.y", this.y);
+    // console.log("this.pipe.y");
     // const flap_sound = new Audio();
     // flap_sound.src = "assets/audio/swoosh.wav";
   }

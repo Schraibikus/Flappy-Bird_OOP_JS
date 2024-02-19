@@ -89,6 +89,7 @@ class Game {
   update(delta) {
     this._background.update(delta);
     this._backgroundBottom.update(delta);
+    this._pipe.update(delta);
     this._bird.update(delta);
   }
 

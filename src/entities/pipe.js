@@ -12,8 +12,10 @@ class Pipe extends Entity {
       x: this._game.width,
       y: this.position(),
     };
-    // console.log("Pipe params", params);
+    console.log("Pipe params", params);
   }
+
+  update(delta) {}
 
   position(min, max) {
     min = Math.ceil(this._pipeMin);
@@ -26,7 +28,7 @@ class Pipe extends Entity {
       this._spriteSheet.then((sprites) => {
         this._drawEngine.drawImage({
           spriteSheet: sprites,
-          image: this._frames[0],
+          image: this._frames[this._frameIdx],
           x: this._pipes[i].x,
           y: this._pipes[i].y,
           width: this.width,
@@ -34,7 +36,7 @@ class Pipe extends Entity {
         });
         this._drawEngine.drawImage({
           spriteSheet: sprites,
-          image: this._frames[1],
+          image: this._frames[this._frameIdx + 1],
           x: this._pipes[i].x,
           y: this._pipes[i].y - this._pipeGap,
           width: this.width,
