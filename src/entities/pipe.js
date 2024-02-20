@@ -13,10 +13,12 @@ class Pipe extends Entity {
       y: this.getPositionY(),
     };
     this._scoreX = params.scoreX;
+    // console.log("pipe", params);
   }
 
   update(delta) {
     this._index = Math.ceil(delta) + this._speedGame + 2;
+    // console.log("index", this._index);
   }
 
   getPositionY(min, max) {

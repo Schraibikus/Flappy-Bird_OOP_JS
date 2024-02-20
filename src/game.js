@@ -2,6 +2,8 @@ class Game {
   constructor() {
     this._config = new Config();
 
+    // this._canvasListener = null;
+
     this._canvas = document.getElementById(this._config.canvas.id);
     this._canvas.width = this._config.canvas.width;
     this._canvas.height = this._config.canvas.height;
@@ -15,6 +17,7 @@ class Game {
     this._inputHandler = new MouseInputHandler({
       left: () => {
         this._bird.flap();
+        // this.status = "start";
       },
     });
   }
@@ -51,6 +54,28 @@ class Game {
       frames: this._config.backgroundBottom.frames,
       spriteSheet: this._spriteSheet,
       speedGame: this._config.speedGame,
+      drawEngine: this._drawEngine,
+      game: this,
+    });
+
+    this._getReadyBG = new GetReadyBG({
+      x: this._config.getReadyBG.x,
+      y: this._config.getReadyBG.y,
+      width: this._config.getReadyBG.width,
+      height: this._config.getReadyBG.height,
+      frames: this._config.getReadyBG.frames,
+      spriteSheet: this._spriteSheet,
+      drawEngine: this._drawEngine,
+      game: this,
+    });
+
+    this._gameOverBG = new GetReadyBG({
+      x: this._config.gameOverBG.x,
+      y: this._config.gameOverBG.y,
+      width: this._config.gameOverBG.width,
+      height: this._config.gameOverBG.height,
+      frames: this._config.gameOverBG.frames,
+      spriteSheet: this._spriteSheet,
       drawEngine: this._drawEngine,
       game: this,
     });
@@ -115,9 +140,16 @@ class Game {
 
       requestAnimationFrame(this._loop.bind(this));
     }
+    // else {
+    //   this._drawEngine.clear();
+    //   this._background.draw();
+    //   // this._getReadyBG.draw();
+    //   this._gameOverBG.draw();
+    // }
   }
 
   start() {
+    this._canvas.removeEventListener("click", this._canvasListener);
     this._playing = true;
     this._inputHandler.subscribe();
     this._lastUpdate = Date.now();
@@ -126,7 +158,22 @@ class Game {
   }
 
   gameOver() {
+    this._drawEngine.clear();
+    this._gameOverBG.draw();
+
     this._playing = false;
     console.log(`Game over: ${this._score}`);
   }
+
+  // preview() {
+  //   this.reset();
+
+  //   this._background.draw();
+  //   this._getReadyBG.draw();
+
+  //   this._canvasListener = (event) => {
+  //     this.start();
+  //   };
+  //   this._canvas.addEventListener("click", this._canvasListener);
+  // }
 }

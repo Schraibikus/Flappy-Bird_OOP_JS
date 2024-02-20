@@ -66,24 +66,39 @@ class BackgroundBottom extends Entity {
   }
 }
 
-// class GetReadyBG extends Entity {
-//   constructor(params) {
-//     super(params);
-//     console.log("GetReadyBG", params);
-//   }
+class GetReadyBG extends Entity {
+  constructor(params) {
+    super(params);
+  }
 
-//   draw() {
-//     if ((this._playing = false)) {
-//       this._spriteSheet.then((sprites) => {
-//         this._drawEngine.drawImage({
-//           spriteSheet: sprites,
-//           image: this._frames[this._frameIdx],
-//           x: this.x,
-//           y: this.y,
-//           width: this.width,
-//           height: this.height,
-//         });
-//       });
-//     }
-//   }
-// }
+  draw() {
+    this._spriteSheet.then((sprites) => {
+      this._drawEngine.drawImage({
+        spriteSheet: sprites,
+        image: this._frames[0],
+        x: this.x,
+        y: this.y,
+        width: this.width,
+        height: this.height,
+      });
+    });
+  }
+}
+class GameOverBG extends Entity {
+  constructor(params) {
+    super(params);
+  }
+
+  draw() {
+    this._spriteSheet.then((sprites) => {
+      this._drawEngine.drawImage({
+        spriteSheet: sprites,
+        image: this._frames[0],
+        x: this.x,
+        y: this.y,
+        width: this.width,
+        height: this.height,
+      });
+    });
+  }
+}

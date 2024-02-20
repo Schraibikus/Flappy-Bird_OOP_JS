@@ -131,16 +131,32 @@ class Config {
 
   //заготовки
   getReadyBG = {
-    x: 0,
-    y: 229,
-    width: 200,
-    height: 200,
+    x: 100,
+    y: 50,
+    width: 300,
+    height: 300,
+    frames: [
+      {
+        x: 0,
+        y: 229,
+        w: 173,
+        h: 200,
+      },
+    ],
   };
 
   gameOverBG = {
-    x: 200,
-    y: 229,
-    width: 250,
+    x: 100,
+    y: 50,
+    width: 300,
     height: 300,
+    frames: [
+      {
+        x: 174,
+        y: 229,
+        w: 250,
+        h: 300,
+      },
+    ],
   };
 }
