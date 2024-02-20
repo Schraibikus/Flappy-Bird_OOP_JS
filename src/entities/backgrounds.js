@@ -6,7 +6,7 @@ class Background extends Entity {
   }
 
   update(delta) {
-    this._index += 25 * delta;
+    this._index += 2.5 * Math.ceil(delta);
     this.x = -((this._index * (this._speedGame / 2)) % this.width);
   }
 
@@ -40,7 +40,7 @@ class BackgroundBottom extends Entity {
   }
 
   update(delta) {
-    this._index += 50 * delta;
+    this._index += 5 * Math.ceil(delta);
     this.x = -((this._index * (this._speedGame / 2)) % this.width);
   }
 
@@ -65,3 +65,25 @@ class BackgroundBottom extends Entity {
     });
   }
 }
+
+// class GetReadyBG extends Entity {
+//   constructor(params) {
+//     super(params);
+//     console.log("GetReadyBG", params);
+//   }
+
+//   draw() {
+//     if ((this._playing = false)) {
+//       this._spriteSheet.then((sprites) => {
+//         this._drawEngine.drawImage({
+//           spriteSheet: sprites,
+//           image: this._frames[this._frameIdx],
+//           x: this.x,
+//           y: this.y,
+//           width: this.width,
+//           height: this.height,
+//         });
+//       });
+//     }
+//   }
+// }
