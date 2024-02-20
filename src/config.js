@@ -17,7 +17,10 @@ class Config {
 
   gravity = 300;
 
-  speedGame = 3;
+  speedGame = 1;
+
+  score = 0;
+  scoreX = 40;
 
   canvas = {
     id: "game",
@@ -124,5 +127,20 @@ class Config {
         h: 26,
       },
     ],
+  };
+
+  //заготовки
+  getReadyBG = {
+    x: 0,
+    y: 229,
+    width: 200,
+    height: 200,
+  };
+
+  gameOverBG = {
+    x: 200,
+    y: 229,
+    width: 250,
+    height: 300,
   };
 }

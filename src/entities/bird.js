@@ -24,6 +24,7 @@ class Bird extends Entity {
     // }
 
     if (this.y + this.height >= this._game._backgroundBottom.y) {
+      console.log("Смерть от падения");
       this._game.gameOver();
     }
   }
@@ -31,11 +32,5 @@ class Bird extends Entity {
   //движение вверх
   flap() {
     this.speed = -this._flapSpeed;
-    // console.log("this.speed", this.speed);
-    // console.log("this._flapSpeed", this._flapSpeed);
-    // console.log("this.y", this.y);
-    // console.log("this.pipe.y");
-    // const flap_sound = new Audio();
-    // flap_sound.src = "assets/audio/swoosh.wav";
   }
 }

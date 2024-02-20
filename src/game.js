@@ -29,7 +29,7 @@ class Game {
   }
 
   reset() {
-    this._score = 0;
+    this._score = this._config.score;
 
     this._background = new Background({
       x: this._config.background.x,
@@ -82,6 +82,7 @@ class Game {
       pipeMin: this._config.pipeMin,
       pipeMax: this._config.pipeMax,
       pipeNext: this._config.pipeNext,
+      scoreX: this._config.scoreX,
       game: this,
     });
   }
