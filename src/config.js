@@ -50,20 +50,20 @@ class Config {
     ],
   };
 
-  restartBtn = {
-    x: this.canvas.width / 2 - 41,
-    y: this.canvas.height - 60,
-    width: 82,
-    height: 28,
-    frames: [
-      {
-        x: 310,
-        y: 112,
-        w: 82,
-        h: 28,
-      },
-    ],
-  };
+  // restartBtn = {
+  //   x: this.canvas.width / 2 - 41,
+  //   y: this.canvas.height - 60,
+  //   width: 82,
+  //   height: 28,
+  //   frames: [
+  //     {
+  //       x: 310,
+  //       y: 112,
+  //       w: 82,
+  //       h: 28,
+  //     },
+  //   ],
+  // };
 
   background = {
     x: 0,
@@ -177,7 +177,7 @@ class Config {
   };
 
   gameOverBG = {
-    x: 100,
+    x: 102,
     y: 50,
     width: 300,
     height: 200,

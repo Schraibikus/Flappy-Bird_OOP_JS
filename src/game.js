@@ -47,7 +47,7 @@ class Game {
       game: this,
     });
 
-    this._gameOverBG = new GetReadyBG({
+    this._gameOverBG = new GameOverBG({
       x: this._config.gameOverBG.x,
       y: this._config.gameOverBG.y,
       width: this._config.gameOverBG.width,
@@ -58,16 +58,16 @@ class Game {
       game: this,
     });
 
-    this._restartBtn = new RestartBtn({
-      x: this._config.restartBtn.x,
-      y: this._config.restartBtn.y,
-      width: this._config.restartBtn.width,
-      height: this._config.restartBtn.height,
-      frames: this._config.restartBtn.frames,
-      spriteSheet: this._spriteSheet,
-      drawEngine: this._drawEngine,
-      game: this,
-    });
+    // this._restartBtn = new RestartBtn({
+    //   x: this._config.restartBtn.x,
+    //   y: this._config.restartBtn.y,
+    //   width: this._config.restartBtn.width,
+    //   height: this._config.restartBtn.height,
+    //   frames: this._config.restartBtn.frames,
+    //   spriteSheet: this._spriteSheet,
+    //   drawEngine: this._drawEngine,
+    //   game: this,
+    // });
 
     this._bird = new Bird({
       x: this._config.bird.x,
@@ -185,19 +185,21 @@ class Game {
     this._inputHandler.subscribe();
     this._lastUpdate = Date.now();
     this.reset();
-    this._background.draw();
     this._loop();
   }
 
   gameOver() {
     this._drawEngine.clear();
+    // this._background.draw();
     this._gameOverBG.draw();
     // this._restartBtn.draw();
+
     if (this._config.score >= this._config.myRecord) {
       localStorage.setItem("myRecord", this._config.score);
     } else {
       localStorage.setItem("myRecord", this._config.myRecord);
     }
+
     this._restart.classList.remove("btn--invisible");
     this._restart.addEventListener("click", () => {
       location.reload();
@@ -205,9 +207,11 @@ class Game {
     });
 
     this._playing = false;
+    this._drawEngine.clear();
   }
 
   initGame() {
+    // localStorage.clear();
     this.initReset();
     document.addEventListener("DOMContentLoaded", () => {
       this._config.myRecord = localStorage.getItem("myRecord");
