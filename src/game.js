@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this._config = new Config();
 
-    // this._canvasListener = null;
+    this._canvasListener = null;
 
     this._canvas = document.getElementById(this._config.canvas.id);
     this._canvas.width = this._config.canvas.width;
@@ -17,7 +17,6 @@ class Game {
     this._inputHandler = new MouseInputHandler({
       left: () => {
         this._bird.flap();
-        // this.status = "start";
       },
     });
   }
@@ -140,12 +139,6 @@ class Game {
 
       requestAnimationFrame(this._loop.bind(this));
     }
-    // else {
-    //   this._drawEngine.clear();
-    //   this._background.draw();
-    //   // this._getReadyBG.draw();
-    //   this._gameOverBG.draw();
-    // }
   }
 
   start() {

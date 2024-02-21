@@ -13,7 +13,7 @@ class Pipe extends Entity {
       y: this.getPositionY(),
     };
     this._scoreX = params.scoreX;
-    // console.log("pipe", params);
+    console.log("pipe", params);
   }
 
   update(delta) {
@@ -58,8 +58,7 @@ class Pipe extends Entity {
         });
       }
       if (this._pipes[i].x == this._scoreX) {
-        this._game._score++;
-        // console.log(this._game._score);
+        this._game._config.score++;
       }
       // if (this._game._score == 2) {
       //   // this._index = this._index + 3;

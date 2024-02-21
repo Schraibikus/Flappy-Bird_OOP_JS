@@ -14,14 +14,6 @@ class Config {
   // die_sound = {
   //   src: "./assets/audio/sfx_die.wav",
   // };
-
-  gravity = 300;
-
-  speedGame = 1;
-
-  score = 0;
-  scoreX = 40;
-
   canvas = {
     id: "game",
     width: 480,
@@ -32,6 +24,44 @@ class Config {
     width: 606,
     height: 428,
     src: "./assets/spritesheet.png",
+  };
+
+  gravity = 300;
+
+  speedGame = 1;
+
+  score = 0;
+  scoreX = 40;
+  myBest = 0;
+
+  scoreOnScreen = {
+    x: this.canvas.width - 70,
+    y: this.canvas.height - 100,
+    width: 60,
+    height: 90,
+    frames: [
+      {
+        x: 246,
+        y: 277,
+        w: 84,
+        h: 116,
+      },
+    ],
+  };
+
+  restartBtn = {
+    x: this.canvas.width / 2 - 41,
+    y: this.canvas.height - 60,
+    width: 82,
+    height: 28,
+    frames: [
+      {
+        x: 310,
+        y: 112,
+        w: 82,
+        h: 28,
+      },
+    ],
   };
 
   background = {
@@ -51,7 +81,7 @@ class Config {
 
   backgroundBottom = {
     x: 0,
-    y: 300,
+    y: this.canvas.height - 20,
     width: this.canvas.width,
     height: 110,
     frames: [
@@ -64,40 +94,11 @@ class Config {
     ],
   };
 
-  pipeGap = 104;
-  pipeMin = 154;
-  pipeMax = 270;
-  pipeNext = 208;
-
-  pipe = {
-    pipes: [],
-
-    x: this.canvas.width,
-    y: 0,
-    width: 68, //bird.width * 2
-    height: 400,
-
-    frames: [
-      {
-        x: 502,
-        y: 0,
-        w: 52,
-        h: 400,
-      },
-      {
-        x: 555,
-        y: 0,
-        w: 52,
-        h: 400,
-      },
-    ],
-  };
-
   bird = {
     x: 50,
     y: 100,
     width: 34,
-    height: 26,
+    height: 25,
 
     flapSpeed: 150,
 
@@ -129,12 +130,41 @@ class Config {
     ],
   };
 
+  pipe = {
+    pipes: [],
+
+    x: this.canvas.width,
+    y: 0,
+    width: this.bird.width * 2,
+    height: 400,
+
+    frames: [
+      {
+        x: 502,
+        y: 0,
+        w: 52,
+        h: 400,
+      },
+      {
+        x: 555,
+        y: 0,
+        w: 52,
+        h: 400,
+      },
+    ],
+  };
+
+  pipeGap = this.pipe.height / 4;
+  pipeMin = 154;
+  pipeMax = 270;
+  pipeNext = this.pipe.width * 3;
+
   //заготовки
   getReadyBG = {
-    x: 100,
-    y: 50,
-    width: 300,
-    height: 300,
+    x: 140,
+    y: 100,
+    width: 200,
+    height: 200,
     frames: [
       {
         x: 0,
@@ -149,13 +179,13 @@ class Config {
     x: 100,
     y: 50,
     width: 300,
-    height: 300,
+    height: 200,
     frames: [
       {
         x: 174,
         y: 229,
         w: 250,
-        h: 300,
+        h: 160,
       },
     ],
   };
