@@ -116,7 +116,6 @@ class GameOverBG extends Entity {
 class ScoreOnScreen extends Entity {
   constructor(params) {
     super(params);
-    console.log("screen", params);
   }
 
   draw() {

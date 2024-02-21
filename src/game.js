@@ -5,6 +5,7 @@ class Game {
     this._canvasListener = null;
 
     this._canvas = document.getElementById(this._config.canvas.id);
+    this._restart = document.getElementById(this._config.canvas.restartId);
     this._canvas.width = this._config.canvas.width;
     this._canvas.height = this._config.canvas.height;
 
@@ -191,16 +192,19 @@ class Game {
   gameOver() {
     this._drawEngine.clear();
     this._gameOverBG.draw();
-    this._restartBtn.draw();
+    // this._restartBtn.draw();
     if (this._config.score >= this._config.myRecord) {
       localStorage.setItem("myRecord", this._config.score);
     } else {
       localStorage.setItem("myRecord", this._config.myRecord);
     }
+    this._restart.classList.remove("btn--invisible");
+    this._restart.addEventListener("click", () => {
+      location.reload();
+      this._restart.classList.add("btn--invisible");
+    });
 
     this._playing = false;
-    console.log(`Game over: ${this._config.score}`);
-    console.log(`Game over: ${this._config.myRecord}`);
   }
 
   initGame() {
