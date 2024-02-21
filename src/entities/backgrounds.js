@@ -130,12 +130,12 @@ class ScoreOnScreen extends Entity {
         height: this.height,
       });
       this._drawEngine.drawText({
-        x: 420,
+        x: 425,
         y: 263,
         text: this._game._config.score,
       });
       this._drawEngine.drawText({
-        x: 420,
+        x: 425,
         y: 298,
         text: this._game._config.myRecord,
       });

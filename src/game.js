@@ -11,7 +11,10 @@ class Game {
     this.width = this._config.canvas.width;
     this.height = this._config.canvas.height;
 
-    this._drawEngine = new CanvasDrawEngine({ canvas: this._canvas });
+    this._drawEngine = new CanvasDrawEngine({
+      canvas: this._canvas,
+      game: this,
+    });
     this._physicsEngine = new PhysicsEngine({ gravity: this._config.gravity });
     this._resourceLoader = new ResourceLoader();
     this._inputHandler = new MouseInputHandler({
@@ -31,9 +34,6 @@ class Game {
   }
 
   reset() {
-    // this._score = this._config.score;
-    // this._myRecord = this._config.myRecord;
-
     this._backgroundBottom = new BackgroundBottom({
       x: this._config.backgroundBottom.x,
       y: this._config.backgroundBottom.y,
@@ -159,7 +159,7 @@ class Game {
     this._backgroundBottom.draw();
     this._pipe.draw();
     this._bird.draw();
-    this._scoreOnScreen.draw();
+    if (!this._config.myRecord == 0) this._scoreOnScreen.draw();
   }
 
   _loop() {
