@@ -78,7 +78,7 @@ class Pipe extends Entity {
         birdXleft <= pipeXright &&
         (birdYtop <= pipeYtop || birdYbottom >= pipeYbottom)
       ) {
-        console.log("Смерть от столкновения с препятствием");
+        // console.log("Смерть от столкновения с препятствием");
         this._game.gameOver();
       }
     }

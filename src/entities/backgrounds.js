@@ -99,6 +99,7 @@ class GameOverBG extends Entity {
         width: this.width,
         height: this.height,
       });
+
       this._drawEngine.drawText({
         x: 220,
         y: 170,
