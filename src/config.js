@@ -32,7 +32,7 @@ class Config {
 
   score = 0;
   scoreX = 40;
-  myBest = 0;
+  myRecord = 0;
 
   scoreOnScreen = {
     x: this.canvas.width - 70,

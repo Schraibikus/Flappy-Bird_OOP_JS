@@ -107,7 +107,7 @@ class GameOverBG extends Entity {
       this._drawEngine.drawText({
         x: 220,
         y: 230,
-        text: this._game._config.myBest,
+        text: this._game._config.myRecord,
       });
     });
   }
@@ -137,7 +137,7 @@ class ScoreOnScreen extends Entity {
       this._drawEngine.drawText({
         x: 420,
         y: 298,
-        text: this._game._config.myBest,
+        text: this._game._config.myRecord,
       });
     });
   }
