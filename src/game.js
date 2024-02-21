@@ -5,13 +5,17 @@ class Game {
     this._canvasListener = null;
 
     this._canvas = document.getElementById(this._config.canvas.id);
+    this._restart = document.getElementById(this._config.canvas.restartId);
     this._canvas.width = this._config.canvas.width;
     this._canvas.height = this._config.canvas.height;
 
     this.width = this._config.canvas.width;
     this.height = this._config.canvas.height;
 
-    this._drawEngine = new CanvasDrawEngine({ canvas: this._canvas });
+    this._drawEngine = new CanvasDrawEngine({
+      canvas: this._canvas,
+      game: this,
+    });
     this._physicsEngine = new PhysicsEngine({ gravity: this._config.gravity });
     this._resourceLoader = new ResourceLoader();
     this._inputHandler = new MouseInputHandler({
@@ -31,20 +35,6 @@ class Game {
   }
 
   reset() {
-    this._score = this._config.score;
-
-    this._background = new Background({
-      x: this._config.background.x,
-      y: this._config.background.y,
-      width: this._config.background.width,
-      height: this._config.background.height,
-      frames: this._config.background.frames,
-      spriteSheet: this._spriteSheet,
-      speedGame: this._config.speedGame,
-      drawEngine: this._drawEngine,
-      game: this,
-    });
-
     this._backgroundBottom = new BackgroundBottom({
       x: this._config.backgroundBottom.x,
       y: this._config.backgroundBottom.y,
@@ -57,23 +47,23 @@ class Game {
       game: this,
     });
 
-    this._getReadyBG = new GetReadyBG({
-      x: this._config.getReadyBG.x,
-      y: this._config.getReadyBG.y,
-      width: this._config.getReadyBG.width,
-      height: this._config.getReadyBG.height,
-      frames: this._config.getReadyBG.frames,
-      spriteSheet: this._spriteSheet,
-      drawEngine: this._drawEngine,
-      game: this,
-    });
-
     this._gameOverBG = new GetReadyBG({
       x: this._config.gameOverBG.x,
       y: this._config.gameOverBG.y,
       width: this._config.gameOverBG.width,
       height: this._config.gameOverBG.height,
       frames: this._config.gameOverBG.frames,
+      spriteSheet: this._spriteSheet,
+      drawEngine: this._drawEngine,
+      game: this,
+    });
+
+    this._restartBtn = new RestartBtn({
+      x: this._config.restartBtn.x,
+      y: this._config.restartBtn.y,
+      width: this._config.restartBtn.width,
+      height: this._config.restartBtn.height,
+      frames: this._config.restartBtn.frames,
       spriteSheet: this._spriteSheet,
       drawEngine: this._drawEngine,
       game: this,
@@ -109,6 +99,53 @@ class Game {
       scoreX: this._config.scoreX,
       game: this,
     });
+
+    this._getReadyBG = new GetReadyBG({
+      x: this._config.getReadyBG.x,
+      y: this._config.getReadyBG.y,
+      width: this._config.getReadyBG.width,
+      height: this._config.getReadyBG.height,
+      frames: this._config.getReadyBG.frames,
+      spriteSheet: this._spriteSheet,
+      drawEngine: this._drawEngine,
+      game: this,
+    });
+
+    this._scoreOnScreen = new ScoreOnScreen({
+      x: this._config.scoreOnScreen.x,
+      y: this._config.scoreOnScreen.y,
+      width: this._config.scoreOnScreen.width,
+      height: this._config.scoreOnScreen.height,
+      frames: this._config.scoreOnScreen.frames,
+      spriteSheet: this._spriteSheet,
+      drawEngine: this._drawEngine,
+      game: this,
+    });
+  }
+
+  initReset() {
+    this._background = new Background({
+      x: this._config.background.x,
+      y: this._config.background.y,
+      width: this._config.background.width,
+      height: this._config.background.height,
+      frames: this._config.background.frames,
+      spriteSheet: this._spriteSheet,
+      speedGame: this._config.speedGame,
+      drawEngine: this._drawEngine,
+      game: this,
+    });
+
+    this._getReadyBG = new GetReadyBG({
+      x: this._config.getReadyBG.x,
+      y: this._config.getReadyBG.y,
+      width: this._config.getReadyBG.width,
+      height: this._config.getReadyBG.height,
+      frames: this._config.getReadyBG.frames,
+      spriteSheet: this._spriteSheet,
+      drawEngine: this._drawEngine,
+      game: this,
+    });
   }
 
   update(delta) {
@@ -123,6 +160,7 @@ class Game {
     this._backgroundBottom.draw();
     this._pipe.draw();
     this._bird.draw();
+    if (!this._config.myRecord == 0) this._scoreOnScreen.draw();
   }
 
   _loop() {
@@ -147,26 +185,39 @@ class Game {
     this._inputHandler.subscribe();
     this._lastUpdate = Date.now();
     this.reset();
+    this._background.draw();
     this._loop();
   }
 
   gameOver() {
     this._drawEngine.clear();
     this._gameOverBG.draw();
+    // this._restartBtn.draw();
+    if (this._config.score >= this._config.myRecord) {
+      localStorage.setItem("myRecord", this._config.score);
+    } else {
+      localStorage.setItem("myRecord", this._config.myRecord);
+    }
+    this._restart.classList.remove("btn--invisible");
+    this._restart.addEventListener("click", () => {
+      location.reload();
+      this._restart.classList.add("btn--invisible");
+    });
 
     this._playing = false;
-    console.log(`Game over: ${this._score}`);
   }
 
-  // preview() {
-  //   this.reset();
+  initGame() {
+    this.initReset();
+    document.addEventListener("DOMContentLoaded", () => {
+      this._config.myRecord = localStorage.getItem("myRecord");
+    });
+    this._background.draw();
+    this._getReadyBG.draw();
 
-  //   this._background.draw();
-  //   this._getReadyBG.draw();
-
-  //   this._canvasListener = (event) => {
-  //     this.start();
-  //   };
-  //   this._canvas.addEventListener("click", this._canvasListener);
-  // }
+    this._canvasListener = (event) => {
+      this.start();
+    };
+    this._canvas.addEventListener("click", this._canvasListener);
+  }
 }

@@ -16,6 +16,7 @@ class Config {
   // };
   canvas = {
     id: "game",
+    restartId: "restart",
     width: 480,
     height: 320,
   };
@@ -32,7 +33,7 @@ class Config {
 
   score = 0;
   scoreX = 40;
-  myBest = 0;
+  myRecord = 0;
 
   scoreOnScreen = {
     x: this.canvas.width - 70,

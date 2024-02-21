@@ -8,6 +8,7 @@ class CanvasDrawEngine extends DrawEngine {
     super();
     this._canvas = canvas;
     this._context = canvas.getContext("2d");
+    this._game = game;
   }
 
   drawImage({ spriteSheet, image, x, y, width, height }) {
@@ -27,7 +28,11 @@ class CanvasDrawEngine extends DrawEngine {
 
   drawText({ x, y, text }) {
     this._context.fillStyle = "#00cc99";
-    this._context.font = "16px 'Press Start 2P'";
+    if (this._game._config.score > 9) {
+      this._context.font = "14px 'Press Start 2P'";
+    } else {
+      this._context.font = "16px 'Press Start 2P'";
+    }
     this._context.fillText(text, x, y);
   }
 

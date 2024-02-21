@@ -13,12 +13,10 @@ class Pipe extends Entity {
       y: this.getPositionY(),
     };
     this._scoreX = params.scoreX;
-    console.log("pipe", params);
   }
 
   update(delta) {
     this._index = Math.ceil(delta) + this._speedGame + 2;
-    // console.log("index", this._index);
   }
 
   getPositionY(min, max) {
@@ -60,10 +58,6 @@ class Pipe extends Entity {
       if (this._pipes[i].x == this._scoreX) {
         this._game._config.score++;
       }
-      // if (this._game._score == 2) {
-      //   // this._index = this._index + 3;
-      //   // return this._index;
-      // }
       if (this._pipes.length > 2) this._pipes.shift();
 
       const birdXright =
