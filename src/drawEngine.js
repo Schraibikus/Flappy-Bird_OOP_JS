@@ -4,7 +4,7 @@ class DrawEngine {
 }
 
 class CanvasDrawEngine extends DrawEngine {
-  constructor({ canvas }) {
+  constructor({ canvas, game }) {
     super();
     this._canvas = canvas;
     this._context = canvas.getContext("2d");
@@ -23,6 +23,12 @@ class CanvasDrawEngine extends DrawEngine {
       width,
       height
     );
+  }
+
+  drawText({ x, y, text }) {
+    this._context.fillStyle = "#00cc99";
+    this._context.font = "16px 'Press Start 2P'";
+    this._context.fillText(text, x, y);
   }
 
   clear() {

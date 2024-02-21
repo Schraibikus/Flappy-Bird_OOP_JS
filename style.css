@@ -19,7 +19,29 @@ body {
   border: 10px solid;
   border-image: linear-gradient(var(--angle), #00cc99, #eef0f5, #1b88e8) 1;
   animation: 5s rotate linear infinite;
+  cursor: pointer;
 }
+
+/* #restart {
+  display: none;
+
+  position: absolute;
+  top: 270px;
+  left: calc(50% - 41px);
+  z-index: 1000;
+
+  width: 82px;
+  height: 28px;
+  background-image: url("app/assets/restartBtn.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+
+  box-shadow: 3px 3px black;
+  transition: box-shadow linear 0.07s;
+} */
 
 @keyframes rotate {
   to {
