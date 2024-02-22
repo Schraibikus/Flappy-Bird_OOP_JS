@@ -160,7 +160,7 @@ class Game {
     this._backgroundBottom.draw();
     this._pipe.draw();
     this._bird.draw();
-    if (!this._config.myRecord == 0) this._scoreOnScreen.draw();
+    if (this._config.myRecord > 0) this._scoreOnScreen.draw();
   }
 
   _loop() {
@@ -172,7 +172,7 @@ class Game {
     if (this._playing) {
       this._drawEngine.clear();
       this.draw();
-
+      this._drawEngine.clear();
       this._lastUpdate = now;
 
       requestAnimationFrame(this._loop.bind(this));
@@ -185,29 +185,33 @@ class Game {
     this._inputHandler.subscribe();
     this._lastUpdate = Date.now();
     this.reset();
-    this._loop();
+    setTimeout(() => {
+      this._loop();
+    }, 10);
   }
 
   gameOver() {
-    this._drawEngine.clear();
-    // this._background.draw();
-    this._gameOverBG.draw();
-    // this._restartBtn.draw();
+    setTimeout(() => {
+      this._drawEngine.clear();
+      this._background.draw();
+      this._gameOverBG.draw();
+      // this._restartBtn.draw();
 
-    if (this._config.score >= this._config.myRecord) {
-      localStorage.setItem("myRecord", this._config.score);
-    } else {
-      localStorage.setItem("myRecord", this._config.myRecord);
-    }
+      if (this._config.score >= this._config.myRecord) {
+        localStorage.setItem("myRecord", this._config.score);
+      } else {
+        localStorage.setItem("myRecord", this._config.myRecord);
+      }
 
-    this._restart.classList.remove("btn--invisible");
-    this._restart.addEventListener("click", () => {
-      location.reload();
-      this._restart.classList.add("btn--invisible");
-    });
+      this._restart.classList.remove("btn--invisible");
+      this._restart.addEventListener("click", () => {
+        location.reload();
+        this._restart.classList.add("btn--invisible");
+      });
 
-    this._playing = false;
-    this._drawEngine.clear();
+      this._playing = false;
+      this._drawEngine.clear();
+    }, 10);
   }
 
   initGame() {
