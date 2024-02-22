@@ -4,7 +4,7 @@ class Bird extends Entity {
     this._flapSpeed = params.flapSpeed;
     this._physicsEngine = params.physicsEngine;
     this.falling = true;
-    // console.log("Bird params", params);
+    console.log("Bird params", params);
   }
 
   //обновляем птичку
