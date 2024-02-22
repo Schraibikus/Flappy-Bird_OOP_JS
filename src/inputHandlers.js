@@ -28,3 +28,22 @@ class MouseInputHandler extends InputHandler {
     },
   };
 }
+
+class KeyboardInputHandler extends InputHandler {
+  buttomIndexNameMap = {
+    ArrowUp: "ArrowUp",
+    Space: "Space",
+    KeyW: "KeyW",
+    keyR: "KeyR",
+  };
+
+  eventHandlerMap = {
+    keydown: (event) => {
+      const buttonName = this.buttomIndexNameMap[event.code];
+      const handler = this._eventHandlerConfig[buttonName];
+      if (handler) {
+        handler(event);
+      }
+    },
+  };
+}

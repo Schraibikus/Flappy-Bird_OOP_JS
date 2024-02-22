@@ -27,7 +27,7 @@ class CanvasDrawEngine extends DrawEngine {
   }
 
   drawText({ x, y, text }) {
-    this._context.fillStyle = "#00cc99";
+    this._context.fillStyle = "tomato";
     if (this._game._config.score > 9) {
       this._context.font = "14px 'Press Start 2P'";
     } else {
