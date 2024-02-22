@@ -23,6 +23,20 @@ class Game {
         this._bird.flap();
       },
     });
+    this._inputHandlerKey = new KeyboardInputHandler({
+      ArrowUp: () => {
+        this._bird.flap();
+      },
+      Space: () => {
+        this._bird.flap();
+      },
+      KeyW: () => {
+        this._bird.flap();
+      },
+      KeyR: () => {
+        localStorage.clear();
+      },
+    });
   }
 
   async prepare() {
@@ -160,7 +174,7 @@ class Game {
     this._backgroundBottom.draw();
     this._pipe.draw();
     this._bird.draw();
-    if (this._config.myRecord > 0) this._scoreOnScreen.draw();
+    if (!this._config.myRecord == 0) this._scoreOnScreen.draw();
   }
 
   _loop() {
@@ -183,6 +197,7 @@ class Game {
     this._canvas.removeEventListener("click", this._canvasListener);
     this._playing = true;
     this._inputHandler.subscribe();
+    this._inputHandlerKey.subscribe();
     this._lastUpdate = Date.now();
     this.reset();
     setTimeout(() => {
@@ -215,7 +230,11 @@ class Game {
   }
 
   initGame() {
-    // localStorage.clear();
+    document.addEventListener("keydown", function (event) {
+      if (event.code == "KeyR") {
+        localStorage.clear();
+      }
+    });
     this.initReset();
     document.addEventListener("DOMContentLoaded", () => {
       this._config.myRecord = localStorage.getItem("myRecord");
