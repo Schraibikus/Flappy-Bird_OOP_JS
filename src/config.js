@@ -95,6 +95,10 @@ class Config {
     ],
   };
 
+  rotation = 0;
+
+  degree = Math.PI / 180;
+
   bird = {
     x: 50,
     y: 100,
