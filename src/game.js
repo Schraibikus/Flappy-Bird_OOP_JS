@@ -93,6 +93,8 @@ class Game {
       flapSpeed: this._config.bird.flapSpeed,
       physicsEngine: this._physicsEngine,
       drawEngine: this._drawEngine,
+      rotation: this._config.rotation,
+      degree: this._config.degree,
       game: this,
     });
 
