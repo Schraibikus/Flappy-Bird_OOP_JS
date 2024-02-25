@@ -13,7 +13,6 @@ class Pipe extends Entity {
       y: this.getPositionY(),
     };
     this._scoreX = params.scoreX;
-    // console.log("pipe", params);
   }
 
   update(delta) {
@@ -58,6 +57,7 @@ class Pipe extends Entity {
       }
       if (this._pipes[i].x == this._scoreX) {
         this._game._config.score++;
+        pointSound.play();
       }
       if (this._pipes.length > 2) this._pipes.shift();
 
@@ -79,6 +79,11 @@ class Pipe extends Entity {
         birdXleft <= pipeXright &&
         (birdYtop <= pipeYtop || birdYbottom >= pipeYbottom)
       ) {
+        hitSound.play();
+        setTimeout(() => {
+          continueSound.play();
+        }, 500);
+
         // console.log("Смерть от столкновения с препятствием");
         this._game.gameOver();
       }
