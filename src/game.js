@@ -3,9 +3,9 @@ class Game {
     this._config = new Config();
 
     this._canvasListener = null;
+    // const music = new Audio("./assets/audio/swooshing.mp3");
 
     this._canvas = document.getElementById(this._config.canvas.id);
-    this._restart = document.getElementById(this._config.canvas.restartId);
     this._canvas.width = this._config.canvas.width;
     this._canvas.height = this._config.canvas.height;
 
@@ -18,9 +18,24 @@ class Game {
     });
     this._physicsEngine = new PhysicsEngine({ gravity: this._config.gravity });
     this._resourceLoader = new ResourceLoader();
+
+    let rect = this._canvas.getBoundingClientRect();
+
     this._inputHandler = new MouseInputHandler({
-      left: () => {
+      left: (event) => {
         this._bird.flap();
+        if (this._playing) flapSound.play();
+
+        let clickX = event.clientX - rect.left;
+        let clickY = event.clientY - rect.top;
+        if (
+          clickX >= this._config.restartBtn.x &&
+          clickX <= this._config.restartBtn.x + this._config.restartBtn.width &&
+          clickY >= this._config.restartBtn.y &&
+          clickY <= this._config.restartBtn.y + this._config.restartBtn.height
+        ) {
+          location.reload();
+        }
       },
     });
     this._inputHandlerKey = new KeyboardInputHandler({
@@ -72,16 +87,16 @@ class Game {
       game: this,
     });
 
-    // this._restartBtn = new RestartBtn({
-    //   x: this._config.restartBtn.x,
-    //   y: this._config.restartBtn.y,
-    //   width: this._config.restartBtn.width,
-    //   height: this._config.restartBtn.height,
-    //   frames: this._config.restartBtn.frames,
-    //   spriteSheet: this._spriteSheet,
-    //   drawEngine: this._drawEngine,
-    //   game: this,
-    // });
+    this._restartBtn = new RestartBtn({
+      x: this._config.restartBtn.x,
+      y: this._config.restartBtn.y,
+      width: this._config.restartBtn.width,
+      height: this._config.restartBtn.height,
+      frames: this._config.restartBtn.frames,
+      spriteSheet: this._spriteSheet,
+      drawEngine: this._drawEngine,
+      game: this,
+    });
 
     this._bird = new Bird({
       x: this._config.bird.x,
@@ -90,6 +105,7 @@ class Game {
       height: this._config.bird.height,
       frames: this._config.bird.frames,
       spriteSheet: this._spriteSheet,
+      sound: this._sounds,
       flapSpeed: this._config.bird.flapSpeed,
       physicsEngine: this._physicsEngine,
       drawEngine: this._drawEngine,
@@ -113,6 +129,7 @@ class Game {
       pipeMax: this._config.pipeMax,
       pipeNext: this._config.pipeNext,
       scoreX: this._config.scoreX,
+      pointSound: this.pointSound,
       game: this,
     });
 
@@ -188,7 +205,6 @@ class Game {
     if (this._playing) {
       this._drawEngine.clear();
       this.draw();
-      this._drawEngine.clear();
       this._lastUpdate = now;
 
       requestAnimationFrame(this._loop.bind(this));
@@ -212,22 +228,14 @@ class Game {
       this._drawEngine.clear();
       this._background.draw();
       this._gameOverBG.draw();
-      // this._restartBtn.draw();
+      this._restartBtn.draw();
 
       if (this._config.score >= this._config.myRecord) {
         localStorage.setItem("myRecord", this._config.score);
       } else {
         localStorage.setItem("myRecord", this._config.myRecord);
       }
-
-      this._restart.classList.remove("btn--invisible");
-      this._restart.addEventListener("click", () => {
-        location.reload();
-        this._restart.classList.add("btn--invisible");
-      });
-
       this._playing = false;
-      this._drawEngine.clear();
     }, 10);
   }
 
@@ -244,7 +252,7 @@ class Game {
     this._background.draw();
     this._getReadyBG.draw();
 
-    this._canvasListener = (event) => {
+    this._canvasListener = () => {
       this.start();
     };
     this._canvas.addEventListener("click", this._canvasListener);

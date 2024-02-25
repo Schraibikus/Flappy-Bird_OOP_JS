@@ -22,6 +22,7 @@ class Bird extends Entity {
     //проверка на столкновение с землей
     if (this.y + this.height >= this._game._backgroundBottom.y) {
       // console.log("Смерть от падения");
+      dieSound.play();
       this._game.gameOver();
     }
 

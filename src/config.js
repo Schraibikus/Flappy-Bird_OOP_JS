@@ -1,22 +1,6 @@
 class Config {
-  // score_sound = {
-  //   src: "./assets/audio/sfx_point.wav",
-  // };
-  // flap_sound = {
-  //   src: "./assets/audio/sfx_flap.wav",
-  // };
-  // hit_sound = {
-  //   src: "./assets/audio/sfx_hit.wav",
-  // };
-  // swooshing_sound = {
-  //   src: "./assets/audio/sfx_swooshing.wav",
-  // };
-  // die_sound = {
-  //   src: "./assets/audio/sfx_die.wav",
-  // };
   canvas = {
     id: "game",
-    restartId: "restart",
     width: 480,
     height: 320,
   };
@@ -50,20 +34,20 @@ class Config {
     ],
   };
 
-  // restartBtn = {
-  //   x: this.canvas.width / 2 - 41,
-  //   y: this.canvas.height - 60,
-  //   width: 82,
-  //   height: 28,
-  //   frames: [
-  //     {
-  //       x: 310,
-  //       y: 112,
-  //       w: 82,
-  //       h: 28,
-  //     },
-  //   ],
-  // };
+  restartBtn = {
+    x: this.canvas.width / 2 - 50,
+    y: this.canvas.height - 60,
+    width: 100,
+    height: 30,
+    frames: [
+      {
+        x: 310,
+        y: 112,
+        w: 82,
+        h: 28,
+      },
+    ],
+  };
 
   background = {
     x: 0,

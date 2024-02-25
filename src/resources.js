@@ -15,7 +15,6 @@ class ResourceLoader {
   };
   async load(resource) {
     const loader = this._typeLoadersMap[resource.type];
-    const loadedRes = await loader(resource);
-    return loadedRes;
+    return await loader(resource);
   }
 }
