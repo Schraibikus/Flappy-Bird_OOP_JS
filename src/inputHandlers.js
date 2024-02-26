@@ -34,7 +34,8 @@ class KeyboardInputHandler extends InputHandler {
     ArrowUp: "ArrowUp",
     Space: "Space",
     KeyW: "KeyW",
-    keyR: "KeyR",
+    KeyC: "KeyC",
+    KeyR: "KeyR",
   };
 
   eventHandlerMap = {

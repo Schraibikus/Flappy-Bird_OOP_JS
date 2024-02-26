@@ -14,19 +14,6 @@ class Entity {
     this._game = game;
   }
 
-  draw() {
-    this._spriteSheet.then((sprites) => {
-      this._drawEngine.drawImage({
-        spriteSheet: sprites,
-        image: this._frames[this._frameIdx],
-        x: this.x,
-        y: this.y,
-        width: this.width,
-        height: this.height,
-      });
-    });
-  }
-
   update(delta) {
     this._frameIdx = (this._frameIdx + Math.ceil(delta)) % this._frames.length;
   }

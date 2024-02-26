@@ -3,6 +3,7 @@ class DrawEngine {
   clear() {}
 }
 
+//игровой движок на канвасе
 class CanvasDrawEngine extends DrawEngine {
   constructor({ canvas, game }) {
     super();
@@ -10,7 +11,7 @@ class CanvasDrawEngine extends DrawEngine {
     this._context = canvas.getContext("2d");
     this._game = game;
   }
-
+  // рисуем изображения
   drawImage({ spriteSheet, image, x, y, width, height }) {
     super.drawImage({ spriteSheet, image, x, y, width, height });
     this._context.drawImage(
@@ -25,7 +26,7 @@ class CanvasDrawEngine extends DrawEngine {
       height
     );
   }
-
+  // текст
   drawText({ x, y, text }) {
     this._context.fillStyle = "tomato";
     if (this._game._config.score > 9) {
@@ -35,7 +36,7 @@ class CanvasDrawEngine extends DrawEngine {
     }
     this._context.fillText(text, x, y);
   }
-
+  // очтщаем холст
   clear() {
     super.clear();
     this._context.clearRect(0, 0, this._canvas.width, this._canvas.height);

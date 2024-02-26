@@ -25,7 +25,8 @@ class Bird extends Entity {
       dieSound.play();
       this._game.gameOver();
     }
-
+    
+    // расчет угла вращения птицы
     if (this.speed >= this._flapSpeed) {
       this._rotation = 45 * this._degree;
       this._frameIdx = 0;
@@ -33,7 +34,7 @@ class Bird extends Entity {
       this._rotation = -25 * this._degree;
     }
   }
-
+  //рисуем птичку и вращаем во время полета
   draw() {
     this._spriteSheet.then((sprites) => {
       this._drawEngine._context.save();

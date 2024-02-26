@@ -3,7 +3,6 @@ class Game {
     this._config = new Config();
 
     this._canvasListener = null;
-    // const music = new Audio("./assets/audio/swooshing.mp3");
 
     this._canvas = document.getElementById(this._config.canvas.id);
     this._canvas.width = this._config.canvas.width;
@@ -16,16 +15,19 @@ class Game {
       canvas: this._canvas,
       game: this,
     });
+
     this._physicsEngine = new PhysicsEngine({ gravity: this._config.gravity });
+
     this._resourceLoader = new ResourceLoader();
-
+    // кнопка рестарт
     let rect = this._canvas.getBoundingClientRect();
-
+    // управлени при помощи мыши
     this._inputHandler = new MouseInputHandler({
       left: (event) => {
         this._bird.flap();
         if (this._playing) flapSound.play();
-
+        flapSound.currentTime = 0;
+        // расчет положения для клика по кнопке рестарт
         let clickX = event.clientX - rect.left;
         let clickY = event.clientY - rect.top;
         if (
@@ -38,18 +40,28 @@ class Game {
         }
       },
     });
+    // управлени с клавиатуры
     this._inputHandlerKey = new KeyboardInputHandler({
       ArrowUp: () => {
         this._bird.flap();
+        if (this._playing) flapSound.play();
+        flapSound.currentTime = 0;
       },
       Space: () => {
         this._bird.flap();
+        if (this._playing) flapSound.play();
+        flapSound.currentTime = 0;
       },
       KeyW: () => {
         this._bird.flap();
+        if (this._playing) flapSound.play();
+        flapSound.currentTime = 0;
+      },
+      KeyC: () => {
+        localStorage.clear();
       },
       KeyR: () => {
-        localStorage.clear();
+        location.reload();
       },
     });
   }
@@ -62,7 +74,7 @@ class Game {
       height: this._config.spritesheet.height,
     });
   }
-
+  // отрисовка
   reset() {
     this._backgroundBottom = new BackgroundBottom({
       x: this._config.backgroundBottom.x,
@@ -195,7 +207,7 @@ class Game {
     this._bird.draw();
     if (!this._config.myRecord == 0) this._scoreOnScreen.draw();
   }
-
+  
   _loop() {
     const now = Date.now();
     const delta = now - this._lastUpdate;
@@ -213,6 +225,7 @@ class Game {
 
   start() {
     this._canvas.removeEventListener("click", this._canvasListener);
+    this._canvas.removeEventListener("keydown", this._canvasListener);
     this._playing = true;
     this._inputHandler.subscribe();
     this._inputHandlerKey.subscribe();
@@ -241,8 +254,9 @@ class Game {
 
   initGame() {
     document.addEventListener("keydown", function (event) {
-      if (event.code == "KeyR") {
+      if (event.code == "KeyC") {
         localStorage.clear();
+        console.log("Best clear");
       }
     });
     this.initReset();
