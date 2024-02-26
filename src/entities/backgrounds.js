@@ -1,3 +1,4 @@
+//задний фон
 class Background extends Entity {
   constructor(params) {
     super(params);
@@ -32,6 +33,7 @@ class Background extends Entity {
   }
 }
 
+// земля
 class BackgroundBottom extends Entity {
   constructor(params) {
     super(params);
@@ -66,6 +68,7 @@ class BackgroundBottom extends Entity {
   }
 }
 
+// экран GetReady
 class GetReadyBG extends Entity {
   constructor(params) {
     super(params);
@@ -84,6 +87,9 @@ class GetReadyBG extends Entity {
     });
   }
 }
+
+
+// экран GameOver
 class GameOverBG extends Entity {
   constructor(params) {
     super(params);
@@ -114,6 +120,8 @@ class GameOverBG extends Entity {
   }
 }
 
+
+// плашка с текущим счетом и рекордом
 class ScoreOnScreen extends Entity {
   constructor(params) {
     super(params);
@@ -143,6 +151,7 @@ class ScoreOnScreen extends Entity {
   }
 }
 
+// кнопка Restart
 class RestartBtn extends Entity {
   constructor(params) {
     super(params);

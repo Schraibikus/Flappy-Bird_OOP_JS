@@ -1,3 +1,4 @@
+// класс для всех переменных
 class Config {
   canvas = {
     id: "game",
@@ -16,9 +17,10 @@ class Config {
   speedGame = 1;
 
   score = 0;
+  // когда труба оказывается на этой отметке, увеличиваем счет
   scoreX = 40;
   myRecord = 0;
-
+  // окно подсчета очков
   scoreOnScreen = {
     x: this.canvas.width - 70,
     y: this.canvas.height - 100,
@@ -33,12 +35,12 @@ class Config {
       },
     ],
   };
-
+  //кнопка рестарт
   restartBtn = {
-    x: this.canvas.width / 2 - 50,
+    x: this.canvas.width / 2 - this.canvas.width / 10,
     y: this.canvas.height - 60,
-    width: 100,
-    height: 30,
+    width: this.canvas.width / 5,
+    height: this.canvas.height / 9,
     frames: [
       {
         x: 310,
@@ -48,7 +50,7 @@ class Config {
       },
     ],
   };
-
+  //задний фон
   background = {
     x: 0,
     y: 0,
@@ -58,12 +60,12 @@ class Config {
       {
         x: 0,
         y: 0,
-        w: 275,
+        w: 274,
         h: 228,
       },
     ],
   };
-
+  //земля
   backgroundBottom = {
     x: 0,
     y: this.canvas.height - 20,
@@ -78,11 +80,11 @@ class Config {
       },
     ],
   };
-
+  // переменная для подсчета поворота птицы при полете
   rotation = 0;
-
+  // переменная для подсчета угла поворота
   degree = Math.PI / 180;
-
+  //птица
   bird = {
     x: 50,
     y: 100,
@@ -93,32 +95,32 @@ class Config {
 
     frames: [
       {
-        x: 276,
+        x: 277,
         y: 112,
-        w: 34,
+        w: 32,
         h: 26,
       },
       {
-        x: 276,
+        x: 277,
         y: 139,
-        w: 34,
+        w: 32,
         h: 26,
       },
       {
-        x: 276,
+        x: 277,
         y: 164,
-        w: 34,
+        w: 32,
         h: 26,
       },
       {
-        x: 276,
+        x: 277,
         y: 139,
-        w: 34,
+        w: 32,
         h: 26,
       },
     ],
   };
-
+  // труба
   pipe = {
     pipes: [],
 
@@ -142,13 +144,15 @@ class Config {
       },
     ],
   };
-
+  // ширина пролета между трубами
   pipeGap = this.pipe.height / 4;
+  // переменные необходимые для расчета высоты появления труб
   pipeMin = 154;
   pipeMax = 270;
+  // расстояние между соседними трубами
   pipeNext = this.pipe.width * 3;
 
-  //заготовки
+  //экран getReady
   getReadyBG = {
     x: 140,
     y: 100,
@@ -163,7 +167,7 @@ class Config {
       },
     ],
   };
-
+  // экран gameOver
   gameOverBG = {
     x: 102,
     y: 50,

@@ -14,17 +14,18 @@ class Pipe extends Entity {
     };
     this._scoreX = params.scoreX;
   }
-
+  // обновляем трубы
   update(delta) {
     this._index = Math.ceil(delta) + this._speedGame + 2;
   }
-
+  // расчет случайного значения следующый трубы
   getPositionY(min, max) {
     min = Math.ceil(this._pipeMin);
     max = Math.floor(this._pipeMax);
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-
+  // рисуем трубы, увеличиваем счет, проверяем на столкновение
+  // рисуем трубы
   draw() {
     for (let i = 0; i < this._pipes.length; i++) {
       this._spriteSheet.then((sprites) => {
@@ -46,21 +47,26 @@ class Pipe extends Entity {
         });
       });
       this._pipes[i].x -= this._index;
-      if (this._index == 3) this._pipeNext = 207;
-      if (this._index == 5 || this._index == 6 || this._index == 7)
+      if (this._index == 5) this._pipeNext = 210;
+      if (this._index == 6 || this._index == 7) {
         this._pipeNext = 210;
+        this._scoreX = 42;
+      }
+
       if (this._pipes[i].x == this._pipeNext) {
         this._pipes.push({
           x: this._game.width,
           y: this.getPositionY(),
         });
       }
+      // увеличиваем счет
       if (this._pipes[i].x == this._scoreX) {
         this._game._config.score++;
         pointSound.play();
+        pointSound.currentTime = 0;
       }
       if (this._pipes.length > 2) this._pipes.shift();
-
+      // проверяем на столкновение с птицей
       const birdXright =
         this._game._config.bird.x + this._game._config.bird.width;
       const pipeXleft = this._pipes[i].x;
@@ -80,9 +86,12 @@ class Pipe extends Entity {
         (birdYtop <= pipeYtop || birdYbottom >= pipeYbottom)
       ) {
         hitSound.play();
+        hitSound.currentTime = 0;
         setTimeout(() => {
+          continueSound.volume = 0.5;
           continueSound.play();
-        }, 500);
+          continueSound.currentTime = 0;
+        }, 300);
 
         // console.log("Смерть от столкновения с препятствием");
         this._game.gameOver();

@@ -5,47 +5,49 @@
 }
 
 body {
-  position: relative;
-  margin-top: 10vh;
-  display: flex;
-  flex-direction: column;
+  margin-top: 5vh;
+  background-color: skyblue;
+  display: grid;
+  grid-template-columns: 30% 60%;
+  gap: 5vh;
   align-items: center;
-  height: 90vh;
+  justify-content: center;
   font-family: "Press Start 2P", system-ui;
+  font-size: 16px;
 }
 
 #game {
-  background-color: #41acee;
+  background-color: skyblue;
   --angle: 0deg;
   border: 10px solid;
   border-image: linear-gradient(var(--angle), #00cc99, #eef0f5, #1b88e8) 1;
   animation: 5s rotate linear infinite;
 }
 
-#restart {
-  position: absolute;
-  width: 100px;
-  height: 32px;
-  top: 26vh;
-  background-image: url("./assets/RestartBtn.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  cursor: pointer;
-  padding: 0;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#restart:hover {
-  box-shadow: 0px 2px 8px 2px rgba(141, 150, 178, 0.3);
-  transform: scale(1.05);
-}
-
 .btn--invisible {
   display: none;
+}
+
+.instructions {
+  text-align: left;
+  padding: 3rem;
+  justify-self: center;
+  color: tomato;
+  font-size: 1rem;
+  user-select: none;
+}
+
+h2 {
+  margin-bottom: 2rem;
+}
+
+ol {
+  max-width: 300px;
+}
+
+li {
+  padding: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 @keyframes rotate {
